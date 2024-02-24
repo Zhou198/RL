@@ -24,7 +24,7 @@ class CNN(nn.Module):
             print({name: [para.shape, para.requires_grad]})
 
     def forward(self, x):
-        x /= 255
+        x = x / 255
         x = self.cnn(x)
         return self.output(x)
 

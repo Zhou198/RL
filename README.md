@@ -3,7 +3,7 @@
 ## Frozen lake: 
 ### keywords: Q-learning, $\varepsilon$-greedy policy, off-policy, valued-based RL
 
-## Car Racing:
+## CarPole:
 ### Actor-critic
 It consists of actor/policy network and critic network, where the former is used to take actions while the later guilds the former's behavior. 
 Specifically, the actor network is updated based on the policy gradient by minimizing the "weighted" cross-entropy (or maximizing the weighted log-likelihood) for the pair $\{(s_t, a_t)\}$. Here the "weight" is a value in critic.
@@ -23,3 +23,8 @@ On the other hand, the critic network is to approximate the value function, whic
 To improve the performance, two tricks inspired from the DQN are further employed in actor-critic: buffer replay and the usage of fixed target network.
 
 ### Proximal Policy Optimization (PPO)
+
+![carRace](./fig/rl0.gif)
+
+*This is the caption for my animation.*
+

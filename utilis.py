@@ -23,7 +23,11 @@ class Params(NamedTuple):
     buffer_min_size: int
     batch_size: int
     total_episodes: int
-    learning_rate: float
+    epochs: int
+    lam: float
+    clip_eps: float
+    actor_lr: float
+    critic_lr: float
     wd: float
     gamma: float  # Discounting rate
     seed: int
@@ -92,6 +96,8 @@ class RLTrainer:
         else:
             raise ValueError("please provide policy_mode correctly")
 
+        # self.env_obj.env.close()
+
     def _on_policy(self, learner):
         for episode in tqdm(range(self.env_obj.params.total_episodes), desc=f"Episodes"):
             state = self.env_obj.env_reset()
@@ -136,6 +142,7 @@ class RLTrainer:
 class TaskEnv:
     def __init__(self, task, action_map, params):
         self.env = gym.make(**task)
+        # self.env = gym.wrappers.RecordVideo(self.env, 'video')
         self.action_map = action_map
         self.params = params
 
